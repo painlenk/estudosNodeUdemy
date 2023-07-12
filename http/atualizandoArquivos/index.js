@@ -18,8 +18,7 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   } else {
-
-    const update = nameParam + '\r\n'
+    const update = nameParam + "\r\n";
     const areadyExistLogArchive = fs.existsSync(
       "http/atualizandoArquivos/logs.txt"
     );
@@ -27,18 +26,14 @@ const server = http.createServer((req, res) => {
     if (!areadyExistLogArchive) {
       fs.writeFile("http/atualizandoArquivos/logs.txt", update, () => {
         res.writeHead(302, { Location: "/" });
-        return res.end()
+        return res.end();
       });
-     
-      
     }
 
     fs.appendFile("http/atualizandoArquivos/logs.txt", update, () => {
-      
       res.writeHead(302, { Location: "/" });
-      return res.end()
+      return res.end();
     });
-    
   }
 });
 
